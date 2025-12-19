@@ -385,7 +385,7 @@ Could you help me out by listing them a bit more clearly? Something like:
 Or just throw them at me in a list - whatever's easier for you!"""
     
     def handle_technical_questions(self, user_input: str) -> str:
-        """Handle technical questions with AIML intelligence"""
+        """Handle technical questions with AIML intelligence and advanced question generation"""
         # Use AIML for natural response analysis
         aiml_result = self.aiml_engine.process_input(user_input, self.session_id)
         
@@ -406,14 +406,17 @@ Or just throw them at me in a list - whatever's easier for you!"""
             'timestamp': str(st.session_state.get('current_time', 'unknown'))
         })
         
+        # Analyze response quality and adapt difficulty
+        response_analysis = self.analyze_response_quality(user_input, aiml_result)
+        
         # Check if we should continue or complete
-        max_questions = 3
+        max_questions = 8  # Increased for more comprehensive assessment
         
         if st.session_state.questions_answered >= max_questions:
             st.session_state.conversation_state = ConversationState.COMPLETED
             return self.generate_completion_response(aiml_result)
         else:
-            return self.generate_follow_up_response(aiml_result)
+            return self.generate_advanced_follow_up_response(aiml_result, response_analysis)
     
     def generate_completion_response(self, aiml_result: Dict[str, Any]) -> str:
         """Generate completion response using AIML"""
@@ -436,30 +439,208 @@ Our team will review everything we talked about today. You should hear back from
 
 I had a great time chatting with you today! Is there anything you'd like to know about TalentScout, our process, or the types of roles we're working on?"""
     
-    def generate_follow_up_response(self, aiml_result: Dict[str, Any]) -> str:
-        """Generate follow-up response using AIML intelligence"""
-        # Use AIML response as base feedback
-        feedback = aiml_result['response'] if aiml_result['confidence'] > 0.7 else "That's a great perspective!"
+    def analyze_response_quality(self, user_input: str, aiml_result: Dict[str, Any]) -> Dict[str, Any]:
+        """Analyze response quality to determine skill level and next question difficulty"""
+        response_length = len(user_input.split())
         
-        # Get next question from generated set
-        remaining_questions = []
-        generated_questions = st.session_state.get('generated_questions', {})
+        # Technical depth indicators
+        technical_keywords = [
+            'architecture', 'performance', 'optimization', 'scalability', 'design pattern',
+            'algorithm', 'complexity', 'memory', 'concurrency', 'async', 'threading',
+            'microservices', 'monolith', 'database', 'indexing', 'caching', 'security',
+            'authentication', 'authorization', 'encryption', 'testing', 'deployment',
+            'ci/cd', 'docker', 'kubernetes', 'cloud', 'monitoring', 'logging'
+        ]
         
-        for tech, questions in generated_questions.items():
-            for question in questions:
-                remaining_questions.append((tech, question))
+        technical_score = sum(1 for keyword in technical_keywords if keyword in user_input.lower())
         
-        if remaining_questions and st.session_state.questions_answered < len(remaining_questions):
-            tech, next_question = remaining_questions[st.session_state.questions_answered]
-            
-            return f"""{feedback} Great! Let me ask you about something else.
-
-💭 **{tech}**: {next_question}
-
-Feel free to share your experience or approach to this!"""
+        # Experience indicators
+        experience_keywords = [
+            'production', 'project', 'team', 'built', 'implemented', 'designed',
+            'optimized', 'scaled', 'deployed', 'maintained', 'refactored',
+            'migrated', 'integrated', 'collaborated', 'led', 'mentored'
+        ]
+        
+        experience_score = sum(1 for keyword in experience_keywords if keyword in user_input.lower())
+        
+        # Determine skill level
+        if response_length > 50 and (technical_score >= 3 or experience_score >= 2):
+            skill_level = 'advanced'
+        elif response_length > 25 and (technical_score >= 1 or experience_score >= 1):
+            skill_level = 'intermediate'
         else:
-            # Generate contextual follow-up using AIML context
+            skill_level = 'beginner'
+        
+        return {
+            'skill_level': skill_level,
+            'technical_score': technical_score,
+            'experience_score': experience_score,
+            'response_length': response_length,
+            'confidence': aiml_result.get('confidence', 0.5)
+        }
+    
+    def generate_advanced_follow_up_response(self, aiml_result: Dict[str, Any], response_analysis: Dict[str, Any]) -> str:
+        """Generate advanced follow-up response based on skill level analysis"""
+        # Use AIML response as base feedback
+        feedback = aiml_result['response'] if aiml_result['confidence'] > 0.7 else "Excellent insight!"
+        
+        skill_level = response_analysis['skill_level']
+        tech_stack = st.session_state.candidate_data.get('tech_stack', {})
+        
+        # Generate advanced questions based on detected skill level and tech stack
+        advanced_question = self.get_advanced_question(skill_level, tech_stack, st.session_state.questions_answered)
+        
+        if advanced_question:
+            return f"""{feedback} I can see you have solid experience with this.
+
+Let me dive deeper into your expertise:
+
+💭 **{advanced_question['category']}**: {advanced_question['question']}
+
+I'm particularly interested in your real-world experience and problem-solving approach."""
+        else:
+            # Fallback to contextual follow-up
             return self.create_contextual_follow_up_aiml(feedback, aiml_result)
+    
+    def get_advanced_question(self, skill_level: str, tech_stack: Dict[str, List[str]], question_number: int) -> Optional[Dict[str, str]]:
+        """Get advanced questions based on skill level and tech stack"""
+        
+        # Advanced question bank organized by technology and difficulty
+        advanced_questions = {
+            'python': {
+                'intermediate': [
+                    "How do you handle exception handling in Python? Any best practices you follow?",
+                    "Explain Python's memory management and garbage collection. Any performance issues you've encountered?",
+                    "What's your experience with Python's asyncio? When would you choose it over threading?",
+                    "How do you structure large Python applications? What design patterns do you use?"
+                ],
+                'advanced': [
+                    "Explain Python's GIL and its implications for multi-threaded applications. How do you work around it?",
+                    "How do you implement custom metaclasses in Python? Can you give a real-world example?",
+                    "Describe your approach to Python performance profiling and optimization in production systems.",
+                    "How do you handle memory leaks in long-running Python applications? What tools do you use?"
+                ]
+            },
+            'javascript': {
+                'intermediate': [
+                    "How do you handle asynchronous operations in JavaScript? Promises vs async/await?",
+                    "Explain JavaScript's event loop and how it affects performance.",
+                    "What's your approach to error handling in JavaScript applications?",
+                    "How do you manage state in complex JavaScript applications?"
+                ],
+                'advanced': [
+                    "Explain JavaScript's prototype chain and how you'd implement inheritance without classes.",
+                    "How do you optimize JavaScript performance for large-scale applications?",
+                    "Describe your approach to memory management and preventing memory leaks in JavaScript.",
+                    "How do you implement custom iterators and generators in JavaScript?"
+                ]
+            },
+            'react': {
+                'intermediate': [
+                    "How do you optimize React component performance? What techniques do you use?",
+                    "Explain React's reconciliation algorithm and how it affects rendering.",
+                    "What's your approach to state management in large React applications?",
+                    "How do you handle side effects in React? useEffect best practices?"
+                ],
+                'advanced': [
+                    "How do you implement custom React hooks for complex business logic?",
+                    "Explain React's Fiber architecture and how it improves performance.",
+                    "How do you handle React application performance at scale? Code splitting, lazy loading?",
+                    "Describe your approach to React testing strategies for complex components."
+                ]
+            },
+            'system_design': {
+                'intermediate': [
+                    "How would you design a scalable REST API that handles 10,000 requests per minute?",
+                    "Explain your approach to database design for a social media application.",
+                    "How do you implement caching strategies in web applications?",
+                    "What's your approach to handling authentication and authorization in microservices?"
+                ],
+                'advanced': [
+                    "Design a distributed system that can handle millions of concurrent users.",
+                    "How would you implement a real-time messaging system like WhatsApp?",
+                    "Explain your approach to data consistency in distributed databases.",
+                    "How do you design fault-tolerant systems? Circuit breakers, retries, fallbacks?"
+                ]
+            },
+            'databases': {
+                'intermediate': [
+                    "How do you optimize slow database queries? What tools and techniques do you use?",
+                    "Explain ACID properties and how they affect database design decisions.",
+                    "What's your approach to database migrations in production systems?",
+                    "How do you handle database scaling? Vertical vs horizontal scaling?"
+                ],
+                'advanced': [
+                    "How do you implement database sharding strategies for high-traffic applications?",
+                    "Explain your approach to handling eventual consistency in distributed databases.",
+                    "How do you design database schemas for time-series data at scale?",
+                    "Describe your strategy for database disaster recovery and backup systems."
+                ]
+            },
+            'devops': {
+                'intermediate': [
+                    "How do you structure Docker containers for production applications?",
+                    "Explain your CI/CD pipeline design and deployment strategies.",
+                    "What's your approach to monitoring and logging in production systems?",
+                    "How do you handle secrets management in containerized applications?"
+                ],
+                'advanced': [
+                    "How do you implement blue-green deployments with zero downtime?",
+                    "Explain your approach to Kubernetes cluster management and scaling strategies.",
+                    "How do you design infrastructure as code for multi-environment deployments?",
+                    "Describe your strategy for handling security vulnerabilities in production systems."
+                ]
+            }
+        }
+        
+        # Determine which category to ask about based on tech stack
+        available_categories = []
+        
+        # Map tech stack to question categories
+        for category, technologies in tech_stack.items():
+            if not technologies:
+                continue
+                
+            for tech in technologies:
+                tech_lower = tech.lower()
+                if tech_lower in ['python', 'django', 'flask', 'fastapi']:
+                    available_categories.append('python')
+                elif tech_lower in ['javascript', 'typescript', 'node.js', 'nodejs']:
+                    available_categories.append('javascript')
+                elif tech_lower in ['react', 'vue', 'angular']:
+                    available_categories.append('react')
+                elif tech_lower in ['postgresql', 'mysql', 'mongodb', 'redis']:
+                    available_categories.append('databases')
+                elif tech_lower in ['docker', 'kubernetes', 'jenkins', 'aws', 'azure']:
+                    available_categories.append('devops')
+        
+        # Always include system design for intermediate+ candidates
+        if skill_level in ['intermediate', 'advanced']:
+            available_categories.append('system_design')
+        
+        # Remove duplicates and select category
+        available_categories = list(set(available_categories))
+        
+        if not available_categories:
+            return None
+        
+        # Rotate through categories to ensure variety
+        category = available_categories[question_number % len(available_categories)]
+        
+        # Select appropriate difficulty level
+        difficulty = skill_level if skill_level in ['intermediate', 'advanced'] else 'intermediate'
+        
+        if category in advanced_questions and difficulty in advanced_questions[category]:
+            questions = advanced_questions[category][difficulty]
+            question = questions[question_number % len(questions)]
+            
+            return {
+                'category': category.replace('_', ' ').title(),
+                'question': question,
+                'difficulty': difficulty
+            }
+        
+        return None
     
     def create_contextual_follow_up_aiml(self, feedback: str, aiml_result: Dict[str, Any]) -> str:
         """Create contextual follow-up using AIML analysis"""

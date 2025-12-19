@@ -28,6 +28,11 @@ class Config:
     MAX_TECH_STACK_ITEMS = 3  # Limit processing for speed
     CACHE_RESPONSES = True
     
+    # Advanced Question Settings
+    ENABLE_ADVANCED_QUESTIONS = True  # Enable advanced technical questions
+    MAX_QUESTIONS_TOTAL = 10  # Total questions in interview
+    ADVANCED_QUESTION_THRESHOLD = 3  # Start advanced questions after this many responses
+    
     # Exit Keywords
     EXIT_KEYWORDS = [
         'bye', 'goodbye', 'exit', 'quit', 'end', 'stop', 

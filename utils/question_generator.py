@@ -20,7 +20,17 @@ class TechnicalQuestionGenerator:
                 "What's your experience with Python's asyncio? When would you choose it over threading?",
                 "Tell me about Python's GIL (Global Interpreter Lock) - how does it affect your code design?",
                 "What are context managers in Python and when do you use them?",
-                "How do you approach testing in Python? Any favorite testing frameworks?"
+                "How do you approach testing in Python? Any favorite testing frameworks?",
+                "Explain Python's metaclasses - have you ever needed to create custom ones?",
+                "How do you optimize Python code for performance? Any profiling tools you use?",
+                "What's your experience with Python's descriptor protocol?",
+                "How do you handle memory leaks in long-running Python applications?",
+                "Explain the difference between deep copy and shallow copy in Python.",
+                "What's your approach to implementing design patterns in Python?",
+                "How do you handle concurrent programming in Python beyond asyncio?",
+                "What's your experience with Python's import system and package management?",
+                "How do you implement caching strategies in Python applications?",
+                "What are your thoughts on type hints and static analysis in Python?"
             ],
             'javascript': [
                 "JavaScript can be tricky with comparisons - how do you handle the difference between == and ===? Any gotchas you've run into?",
@@ -62,7 +72,17 @@ class TechnicalQuestionGenerator:
                 "What's your experience with React performance optimization? Any techniques you use regularly?",
                 "How do you approach component composition in React? Any patterns you find particularly useful?",
                 "What's your take on React Context vs external state management libraries?",
-                "How do you handle forms in React? Any libraries or patterns you prefer?"
+                "How do you handle forms in React? Any libraries or patterns you prefer?",
+                "Explain React's reconciliation algorithm and how it affects rendering performance.",
+                "How do you implement custom React hooks for complex business logic?",
+                "What's your experience with React's Concurrent Mode and Suspense?",
+                "How do you handle code splitting and lazy loading in React applications?",
+                "What's your approach to testing React components? Unit vs integration testing?",
+                "How do you implement error boundaries in React applications?",
+                "What's your experience with React's new server components?",
+                "How do you handle React application performance at scale?",
+                "What's your approach to React component styling? CSS-in-JS vs traditional CSS?",
+                "How do you implement accessibility (a11y) in React applications?"
             ],
             'django': [
                 "Django's MTV architecture is interesting - how would you explain it compared to traditional MVC?",
@@ -148,6 +168,87 @@ class TechnicalQuestionGenerator:
             ],
             'aws': [
                 "What are the main AWS compute services?",
+                "How do you design fault-tolerant systems on AWS?",
+                "What's your experience with AWS Lambda and serverless architecture?",
+                "How do you implement auto-scaling strategies on AWS?",
+                "What's your approach to AWS security and IAM management?"
+            ],
+            
+            # System Design & Architecture
+            'system_design': [
+                "How would you design a URL shortener like bit.ly that handles millions of requests?",
+                "Design a chat application that can handle millions of concurrent users.",
+                "How would you architect a social media feed that updates in real-time?",
+                "Design a distributed cache system like Redis Cluster.",
+                "How would you build a recommendation system for an e-commerce platform?",
+                "Design a file storage system like Dropbox or Google Drive.",
+                "How would you architect a ride-sharing application like Uber?",
+                "Design a search engine that can index billions of web pages.",
+                "How would you build a real-time analytics system for tracking user behavior?",
+                "Design a payment processing system that handles high transaction volumes.",
+                "How would you architect a video streaming platform like Netflix?",
+                "Design a distributed database that ensures ACID properties.",
+                "How would you build a notification system that supports multiple channels?",
+                "Design a load balancer that can handle millions of requests per second.",
+                "How would you architect a microservices system with proper service discovery?"
+            ],
+            
+            # Advanced Architecture Questions
+            'architecture': [
+                "Explain the trade-offs between microservices and monolithic architecture.",
+                "How do you handle data consistency in distributed systems?",
+                "What's your approach to implementing circuit breakers and retry mechanisms?",
+                "How do you design APIs for backward compatibility?",
+                "What's your strategy for handling database migrations in production?",
+                "How do you implement event-driven architecture in practice?",
+                "What's your approach to caching strategies in distributed systems?",
+                "How do you handle authentication and authorization in microservices?",
+                "What's your experience with CQRS (Command Query Responsibility Segregation)?",
+                "How do you implement distributed tracing and monitoring?",
+                "What's your approach to handling eventual consistency?",
+                "How do you design systems for high availability and disaster recovery?",
+                "What's your strategy for API rate limiting and throttling?",
+                "How do you implement blue-green deployments and canary releases?",
+                "What's your approach to handling cross-cutting concerns in distributed systems?"
+            ],
+            
+            # Performance & Optimization
+            'performance': [
+                "How do you identify and resolve performance bottlenecks in web applications?",
+                "What's your approach to database query optimization?",
+                "How do you implement effective caching strategies?",
+                "What tools do you use for application performance monitoring?",
+                "How do you optimize frontend performance for large applications?",
+                "What's your experience with CDN implementation and optimization?",
+                "How do you handle memory management in high-traffic applications?",
+                "What's your approach to load testing and capacity planning?",
+                "How do you optimize API response times?",
+                "What's your strategy for handling large file uploads and downloads?",
+                "How do you implement efficient search functionality?",
+                "What's your approach to optimizing mobile application performance?",
+                "How do you handle real-time data processing at scale?",
+                "What's your experience with performance profiling tools?",
+                "How do you optimize database indexing strategies?"
+            ],
+            
+            # Security
+            'security': [
+                "How do you implement secure authentication and authorization?",
+                "What's your approach to preventing SQL injection attacks?",
+                "How do you handle sensitive data encryption and storage?",
+                "What's your experience with implementing OAuth and JWT?",
+                "How do you secure API endpoints and prevent abuse?",
+                "What's your approach to handling CORS and XSS vulnerabilities?",
+                "How do you implement secure session management?",
+                "What's your strategy for handling security vulnerabilities in dependencies?",
+                "How do you implement proper input validation and sanitization?",
+                "What's your experience with penetration testing and security audits?",
+                "How do you handle secure communication between microservices?",
+                "What's your approach to implementing role-based access control?",
+                "How do you secure database connections and queries?",
+                "What's your strategy for handling security in CI/CD pipelines?",
+                "How do you implement secure file upload and processing?"
+            ]
                 "Explain the difference between S3 storage classes.",
                 "What is AWS Lambda and when would you use it?",
                 "How does AWS VPC work?",

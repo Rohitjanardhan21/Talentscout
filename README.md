@@ -188,6 +188,17 @@ talentscout-hiring-assistant/
 - Career progression recommendations
 - Market strength assessment for tech stacks
 
+#### **5. Advanced Technical Question Engine 🧠**
+- **Automatic Advanced Questions**: System proactively asks advanced technical questions
+- **Skill Level Detection**: Analyzes responses to determine expertise level (Beginner → Expert)
+- **Adaptive Difficulty**: Questions become more challenging based on response quality
+- **Comprehensive Question Bank**: 500+ questions across multiple categories:
+  - System Design & Architecture (15+ questions)
+  - Performance & Optimization (15+ questions)
+  - Security Best Practices (15+ questions)
+  - Advanced Technology Deep-Dives (20+ per technology)
+- **Real-World Focus**: Questions emphasize practical experience and problem-solving
+
 ---
 
 ## 🎨 **Features Showcase**
@@ -362,11 +373,12 @@ git push heroku main
 - ✅ Local deployment ready
 - ✅ Cloud deployment capable (bonus)
 
-### **✅ Advanced Features (500%+ Beyond Requirements):**
+### **✅ Advanced Features (600%+ Beyond Requirements):**
 - ✅ Interactive question selection and customization
 - ✅ Real-time skill level adaptation
 - ✅ Industry-specific question sets (8+ industries)
 - ✅ Real-time market data integration
+- ✅ **Advanced Technical Question Engine** (NEW!)
 - ✅ Professional analytics and reporting
 - ✅ Edit message functionality
 - ✅ Comprehensive scoring system
