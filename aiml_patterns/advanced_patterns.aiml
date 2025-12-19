@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+
+<!-- Advanced Technical Patterns -->
+<category>
+    <pattern>I HAVE EXPERIENCE WITH *</pattern>
+    <template>
+        <set name="tech_stack"><star/></set>
+        That's impressive! <star/> is a solid choice. 
+        <think><set name="tech_mentioned"><star/></set></think>
+        
+        <condition name="tech_mentioned">
+            <li value="PYTHON">Python is fantastic for so many things! Are you more into web development, data science, or something else?</li>
+            <li value="JAVASCRIPT">JavaScript is everywhere these days! Do you work more on the frontend, backend, or full-stack?</li>
+            <li value="REACT">React is such a powerful framework! How do you handle state management in complex applications?</li>
+            <li value="DJANGO">Django is great for rapid development! What's your favorite feature of the framework?</li>
+            <li value="AWS">Cloud experience is so valuable! Which AWS services do you work with most?</li>
+            <li value="DOCKER">Containerization is essential nowadays! How do you use Docker in your workflow?</li>
+            <li>That's a great technology to have in your toolkit! Tell me more about how you use it in your projects.</li>
+        </condition>
+    </template>
+</category>
+
+<!-- Problem-Solving Patterns -->
+<category>
+    <pattern>I WOULD USE *</pattern>
+    <template>
+        <set name="solution_approach"><star/></set>
+        That's a solid approach! Using <star/> shows good technical judgment.
+        
+        <random>
+            <li>What made you choose that particular solution?</li>
+            <li>Have you used that approach in production before?</li>
+            <li>What alternatives did you consider?</li>
+            <li>How would you handle scaling that solution?</li>
+        </random>
+    </template>
+</category>
+
+<category>
+    <pattern>I WOULD * TO SOLVE *</pattern>
+    <template>
+        Excellent problem-solving approach! <star index="1"/> is a smart way to handle <star index="2"/>.
+        
+        <random>
+            <li>What challenges might you face with that approach?</li>
+            <li>How would you test that solution?</li>
+            <li>What would be your backup plan if that didn't work?</li>
+        </random>
+    </template>
+</category>
+
+<!-- Architecture and Design Patterns -->
+<category>
+    <pattern>I WOULD DESIGN * USING *</pattern>
+    <template>
+        Great architectural thinking! Designing <star index="1"/> with <star index="2"/> shows you understand scalable systems.
+        
+        <random>
+            <li>How would you handle data consistency in that design?</li>
+            <li>What about performance bottlenecks - how would you address those?</li>
+            <li>How would you monitor and maintain that system?</li>
+            <li>What security considerations would you need to think about?</li>
+        </random>
+    </template>
+</category>
+
+<!-- Learning and Growth Patterns -->
+<category>
+    <pattern>I LEARNED * BY *</pattern>
+    <template>
+        That's a great way to learn! <star index="2"/> is an effective approach for mastering <star index="1"/>.
+        
+        <random>
+            <li>What was the most challenging part of learning that?</li>
+            <li>How do you stay current with new developments in that area?</li>
+            <li>What would you recommend to someone just starting with that technology?</li>
+        </random>
+    </template>
+</category>
+
+<category>
+    <pattern>I AM CURRENTLY LEARNING *</pattern>
+    <template>
+        That's awesome! <star/> is definitely worth learning. Continuous learning is so important in tech.
+        
+        <random>
+            <li>What motivated you to start learning that?</li>
+            <li>How are you finding the learning process?</li>
+            <li>Do you have any projects planned using that technology?</li>
+        </random>
+    </template>
+</category>
+
+<!-- Team and Collaboration Patterns -->
+<category>
+    <pattern>I WORK WITH A TEAM OF *</pattern>
+    <template>
+        Team collaboration is crucial! Working with <star/> must give you great diverse perspectives.
+        
+        <random>
+            <li>How do you handle code reviews in your team?</li>
+            <li>What's your approach to resolving technical disagreements?</li>
+            <li>How do you share knowledge within the team?</li>
+        </random>
+    </template>
+</category>
+
+<category>
+    <pattern>I PREFER * OVER *</pattern>
+    <template>
+        Interesting preference! Choosing <star index="1"/> over <star index="2"/> suggests you've thought about the trade-offs.
+        
+        <random>
+            <li>What specific advantages does that give you?</li>
+            <li>Are there situations where you might choose the alternative?</li>
+            <li>How did you come to that conclusion?</li>
+        </random>
+    </template>
+</category>
+
+<!-- Challenge and Problem Patterns -->
+<category>
+    <pattern>THE BIGGEST CHALLENGE WAS *</pattern>
+    <template>
+        Challenges like <star/> really test your problem-solving skills! 
+        
+        <random>
+            <li>How did you approach solving that challenge?</li>
+            <li>What did you learn from that experience?</li>
+            <li>Would you handle it differently now?</li>
+            <li>Did you get help from others or solve it independently?</li>
+        </random>
+    </template>
+</category>
+
+<category>
+    <pattern>I HAD TO DEBUG *</pattern>
+    <template>
+        Debugging <star/> can be tricky! That's a valuable skill to have.
+        
+        <random>
+            <li>What's your systematic approach to debugging?</li>
+            <li>What tools do you use for debugging?</li>
+            <li>How do you prevent similar issues in the future?</li>
+        </random>
+    </template>
+</category>
+
+<!-- Performance and Optimization Patterns -->
+<category>
+    <pattern>I OPTIMIZED * BY *</pattern>
+    <template>
+        Excellent optimization work! Improving <star index="1"/> by <star index="2"/> shows you care about performance.
+        
+        <random>
+            <li>How did you measure the improvement?</li>
+            <li>What other optimization techniques did you consider?</li>
+            <li>How do you balance optimization with code readability?</li>
+        </random>
+    </template>
+</category>
+
+<!-- Testing Patterns -->
+<category>
+    <pattern>I WRITE * TESTS</pattern>
+    <template>
+        Testing is so important! <star/> tests are a great practice for maintaining code quality.
+        
+        <random>
+            <li>What's your approach to test-driven development?</li>
+            <li>How do you decide what to test?</li>
+            <li>What testing frameworks do you prefer?</li>
+        </random>
+    </template>
+</category>
+
+<!-- Deployment and DevOps Patterns -->
+<category>
+    <pattern>I DEPLOY USING *</pattern>
+    <template>
+        <star/> is a solid deployment approach! DevOps skills are really valuable.
+        
+        <random>
+            <li>How do you handle rollbacks if something goes wrong?</li>
+            <li>What's your approach to monitoring deployed applications?</li>
+            <li>How do you manage different environments (dev, staging, prod)?</li>
+        </random>
+    </template>
+</category>
+
+<!-- Database Patterns -->
+<category>
+    <pattern>I USE * DATABASE</pattern>
+    <template>
+        <star/> is a great choice! Database design and optimization are crucial skills.
+        
+        <random>
+            <li>How do you approach database schema design?</li>
+            <li>What's your strategy for handling database migrations?</li>
+            <li>How do you optimize database queries for performance?</li>
+        </random>
+    </template>
+</category>
+
+<!-- API Patterns -->
+<category>
+    <pattern>I BUILD * APIS</pattern>
+    <template>
+        <star/> APIs are essential for modern applications! API design is an art.
+        
+        <random>
+            <li>How do you approach API versioning?</li>
+            <li>What's your strategy for API documentation?</li>
+            <li>How do you handle API authentication and security?</li>
+        </random>
+    </template>
+</category>
+
+<!-- Security Patterns -->
+<category>
+    <pattern>I HANDLE SECURITY BY *</pattern>
+    <template>
+        Security is so critical! <star/> shows you take it seriously.
+        
+        <random>
+            <li>What other security best practices do you follow?</li>
+            <li>How do you stay updated on security vulnerabilities?</li>
+            <li>Have you ever had to respond to a security incident?</li>
+        </random>
+    </template>
+</category>
+
+<!-- Agile and Process Patterns -->
+<category>
+    <pattern>WE USE * METHODOLOGY</pattern>
+    <template>
+        <star/> methodology can be really effective when done well!
+        
+        <random>
+            <li>What do you like most about that approach?</li>
+            <li>How do you handle changing requirements?</li>
+            <li>What role do you typically play in the process?</li>
+        </random>
+    </template>
+</category>
+
+<!-- Remote Work Patterns -->
+<category>
+    <pattern>I WORK REMOTELY</pattern>
+    <template>
+        Remote work has become so common! It requires good self-discipline and communication skills.
+        
+        <random>
+            <li>How do you stay connected with your team?</li>
+            <li>What tools do you use for collaboration?</li>
+            <li>How do you maintain work-life balance while remote?</li>
+        </random>
+    </template>
+</category>
+
+<!-- Career Goals Patterns -->
+<category>
+    <pattern>I WANT TO BECOME *</pattern>
+    <template>
+        <set name="career_goal"><star/></set>
+        That's a great career goal! Becoming <star/> requires dedication and continuous learning.
+        
+        <condition name="career_goal">
+            <li value="SENIOR DEVELOPER">Senior roles require both technical depth and leadership skills. What areas are you focusing on to get there?</li>
+            <li value="TECH LEAD">Tech leadership is exciting! How are you developing your mentoring and architectural skills?</li>
+            <li value="FULL STACK DEVELOPER">Full-stack development gives you such versatility! Which side do you enjoy more - frontend or backend?</li>
+            <li>That's an excellent direction! What steps are you taking to move toward that goal?</li>
+        </condition>
+    </template>
+</category>
+
+<!-- Salary and Compensation Patterns -->
+<category>
+    <pattern>WHAT IS THE SALARY RANGE</pattern>
+    <template>
+        Great question! Compensation varies based on several factors:
+        
+        💰 **Key factors**:
+        - Your experience level (<get name="experience_years"/> years is solid!)
+        - Technology stack and specialization
+        - Company size and location
+        - Remote vs. on-site opportunities
+        
+        Based on your background, I'd expect competitive packages with:
+        - Base salary in market range for your experience
+        - Potential equity/stock options
+        - Comprehensive benefits
+        - Learning and development budgets
+        
+        We always negotiate to get you the best possible offer! What's most important to you in a compensation package?
+    </template>
+</category>
+
+<!-- Company Culture Patterns -->
+<category>
+    <pattern>WHAT IS THE CULTURE LIKE</pattern>
+    <template>
+        Culture is so important! Our client companies typically offer:
+        
+        🏢 **Work Environment**:
+        - Collaborative, learning-focused teams
+        - Flexible work arrangements (remote, hybrid, office)
+        - Focus on work-life balance
+        - Investment in professional growth
+        
+        🚀 **Engineering Culture**:
+        - Code quality and best practices valued
+        - Regular tech talks and knowledge sharing
+        - Modern development practices
+        - Innovation and experimentation encouraged
+        
+        The specific culture varies by company, but we only work with organizations that treat developers well and invest in their growth.
+        
+        What kind of work environment are you looking for?
+    </template>
+</category>
+
+</aiml>

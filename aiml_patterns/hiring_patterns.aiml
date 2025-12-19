@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+
+<!-- Greeting Patterns -->
+<category>
+    <pattern>HELLO</pattern>
+    <template>
+        Hey there! 👋 Welcome to TalentScout! I'm your AI assistant, and I'm excited to chat with you today. 
+        Think of this as a friendly conversation rather than a formal interview - I'm here to get to know you and your technical background.
+        What should I call you?
+    </template>
+</category>
+
+<category>
+    <pattern>HI</pattern>
+    <template><srai>HELLO</srai></template>
+</category>
+
+<category>
+    <pattern>HEY</pattern>
+    <template><srai>HELLO</srai></template>
+</category>
+
+<category>
+    <pattern>GOOD MORNING</pattern>
+    <template><srai>HELLO</srai></template>
+</category>
+
+<category>
+    <pattern>GOOD AFTERNOON</pattern>
+    <template><srai>HELLO</srai></template>
+</category>
+
+<!-- Name Collection -->
+<category>
+    <pattern>MY NAME IS *</pattern>
+    <template>
+        Great to meet you, <star/>! <set name="candidate_name"><star/></set>
+        What's the best email to reach you at?
+    </template>
+</category>
+
+<category>
+    <pattern>I AM *</pattern>
+    <template><srai>MY NAME IS <star/></srai></template>
+</category>
+
+<category>
+    <pattern>CALL ME *</pattern>
+    <template><srai>MY NAME IS <star/></srai></template>
+</category>
+
+<!-- Single word responses that could be names -->
+<category>
+    <pattern>JO</pattern>
+    <template><srai>MY NAME IS JO</srai></template>
+</category>
+
+<category>
+    <pattern>ALEX</pattern>
+    <template><srai>MY NAME IS ALEX</srai></template>
+</category>
+
+<category>
+    <pattern>SAM</pattern>
+    <template><srai>MY NAME IS SAM</srai></template>
+</category>
+
+<category>
+    <pattern>MAX</pattern>
+    <template><srai>MY NAME IS MAX</srai></template>
+</category>
+
+<category>
+    <pattern>KIM</pattern>
+    <template><srai>MY NAME IS KIM</srai></template>
+</category>
+
+<category>
+    <pattern>LEE</pattern>
+    <template><srai>MY NAME IS LEE</srai></template>
+</category>
+
+<category>
+    <pattern>RAY</pattern>
+    <template><srai>MY NAME IS RAY</srai></template>
+</category>
+
+<category>
+    <pattern>TOM</pattern>
+    <template><srai>MY NAME IS TOM</srai></template>
+</category>
+
+<category>
+    <pattern>ANN</pattern>
+    <template><srai>MY NAME IS ANN</srai></template>
+</category>
+
+<category>
+    <pattern>BOB</pattern>
+    <template><srai>MY NAME IS BOB</srai></template>
+</category>
+
+<category>
+    <pattern>SUE</pattern>
+    <template><srai>MY NAME IS SUE</srai></template>
+</category>
+
+<category>
+    <pattern>DAN</pattern>
+    <template><srai>MY NAME IS DAN</srai></template>
+</category>
+
+<category>
+    <pattern>LIZ</pattern>
+    <template><srai>MY NAME IS LIZ</srai></template>
+</category>
+
+<category>
+    <pattern>BEN</pattern>
+    <template><srai>MY NAME IS BEN</srai></template>
+</category>
+
+<category>
+    <pattern>AMY</pattern>
+    <template><srai>MY NAME IS AMY</srai></template>
+</category>
+
+<!-- Experience Patterns -->
+<category>
+    <pattern>I HAVE * YEARS OF EXPERIENCE</pattern>
+    <template>
+        <set name="experience_years"><star/></set>
+        Nice! <star/> years of experience is great. 
+        <condition name="experience_years">
+            <li value="1">You're just getting started - that's exciting!</li>
+            <li value="2">You're building solid foundations!</li>
+            <li value="3">You're developing good expertise!</li>
+            <li value="4">You're becoming quite experienced!</li>
+            <li value="5">You've got solid mid-level experience!</li>
+            <li>You're definitely a seasoned professional!</li>
+        </condition>
+        What kind of role are you looking for?
+    </template>
+</category>
+
+<category>
+    <pattern>* YEARS EXPERIENCE</pattern>
+    <template><srai>I HAVE <star/> YEARS OF EXPERIENCE</srai></template>
+</category>
+
+<category>
+    <pattern>* YEARS</pattern>
+    <template><srai>I HAVE <star/> YEARS OF EXPERIENCE</srai></template>
+</category>
+
+<!-- Tech Stack Patterns -->
+<category>
+    <pattern>I WORK WITH *</pattern>
+    <template>
+        <set name="tech_stack"><star/></set>
+        Impressive! You're working with <star/>. That's a solid tech stack.
+        Let me dive deeper with some questions that match your experience.
+        
+        Here's a technical question for you:
+        <random>
+            <li>How do you approach debugging complex issues in your applications?</li>
+            <li>Tell me about a challenging project you've worked on recently.</li>
+            <li>How do you ensure code quality in your development process?</li>
+            <li>What's your approach to handling performance optimization?</li>
+        </random>
+    </template>
+</category>
+
+<category>
+    <pattern>I USE *</pattern>
+    <template><srai>I WORK WITH <star/></srai></template>
+</category>
+
+<category>
+    <pattern>MY TECH STACK IS *</pattern>
+    <template><srai>I WORK WITH <star/></srai></template>
+</category>
+
+<category>
+    <pattern>I KNOW *</pattern>
+    <template><srai>I WORK WITH <star/></srai></template>
+</category>
+
+<!-- Technical Response Patterns -->
+<category>
+    <pattern>I WOULD *</pattern>
+    <template>
+        That's a great approach! I like how you think about <star/>.
+        <random>
+            <li>That shows good problem-solving skills!</li>
+            <li>That's exactly the kind of thinking we're looking for!</li>
+            <li>Nice! That demonstrates solid understanding.</li>
+            <li>Excellent way to approach that challenge!</li>
+        </random>
+        
+        Let me ask you another question:
+        <random>
+            <li>How do you explain complex technical concepts to non-technical stakeholders?</li>
+            <li>Tell me about a time when you had to learn a new technology quickly.</li>
+            <li>What's your approach to code reviews and collaboration?</li>
+            <li>How do you handle tight deadlines while maintaining code quality?</li>
+        </random>
+    </template>
+</category>
+
+<category>
+    <pattern>I THINK *</pattern>
+    <template><srai>I WOULD <star/></srai></template>
+</category>
+
+<category>
+    <pattern>I BELIEVE *</pattern>
+    <template><srai>I WOULD <star/></srai></template>
+</category>
+
+<!-- Project Experience Patterns -->
+<category>
+    <pattern>I BUILT *</pattern>
+    <template>
+        That sounds like an interesting project! Building <star/> must have been quite an experience.
+        <random>
+            <li>What was the most challenging part of that project?</li>
+            <li>What technologies did you choose and why?</li>
+            <li>How did you handle the architecture and scaling?</li>
+            <li>What would you do differently if you built it again?</li>
+        </random>
+    </template>
+</category>
+
+<category>
+    <pattern>I DEVELOPED *</pattern>
+    <template><srai>I BUILT <star/></srai></template>
+</category>
+
+<category>
+    <pattern>I CREATED *</pattern>
+    <template><srai>I BUILT <star/></srai></template>
+</category>
+
+<category>
+    <pattern>I WORKED ON *</pattern>
+    <template><srai>I BUILT <star/></srai></template>
+</category>
+
+<!-- Company Questions -->
+<category>
+    <pattern>WHAT IS TALENTSCOUT</pattern>
+    <template>
+        Great question! TalentScout is a tech-focused recruitment agency that partners with innovative companies - from fast-growing startups to established tech leaders. 
+        
+        What makes us different:
+        ✨ We're technical - our team understands the technologies you work with
+        🎯 Quality over quantity - we focus on finding the right fit, not just any job
+        🤝 Candidate-first - we're here to help your career, not just fill positions
+        🚀 Modern companies - we work with organizations that value engineering excellence
+        
+        What would you like to know more about?
+    </template>
+</category>
+
+<category>
+    <pattern>TELL ME ABOUT THE COMPANY</pattern>
+    <template><srai>WHAT IS TALENTSCOUT</srai></template>
+</category>
+
+<category>
+    <pattern>WHAT IS THE PROCESS</pattern>
+    <template>
+        Sure! Here's what happens next:
+        
+        📋 **Next 2-3 days**: Our team reviews your profile and matches you with relevant opportunities
+        📞 **If there's a match**: We'll reach out to schedule a more detailed conversation with the hiring team
+        🎯 **Company interviews**: Usually 2-3 rounds depending on the role and company
+        ⚡ **Timeline**: Most of our processes wrap up within 2-3 weeks total
+        
+        We'll keep you updated throughout the process, and you can always reach out if you have questions!
+    </template>
+</category>
+
+<category>
+    <pattern>WHAT HAPPENS NEXT</pattern>
+    <template><srai>WHAT IS THE PROCESS</srai></template>
+</category>
+
+<!-- Salary and Benefits -->
+<category>
+    <pattern>WHAT ABOUT SALARY</pattern>
+    <template>
+        Great question! Based on your background, here are the types of compensation we're seeing:
+        
+        💰 **Salary ranges** (varies by location and company):
+        - <get name="experience_years"/>+ years experience: Usually very competitive packages
+        - Remote opportunities available across different time zones
+        - Many include equity, great benefits, and learning budgets
+        
+        The specific range depends on the role, company size, and location. We always negotiate to get you the best possible offer!
+        
+        Would you like me to focus on any particular type of role or company size?
+    </template>
+</category>
+
+<category>
+    <pattern>HOW MUCH DO YOU PAY</pattern>
+    <template><srai>WHAT ABOUT SALARY</srai></template>
+</category>
+
+<category>
+    <pattern>WHAT ARE THE BENEFITS</pattern>
+    <template><srai>WHAT ABOUT SALARY</srai></template>
+</category>
+
+<!-- Encouragement and Positive Responses -->
+<category>
+    <pattern>I DON'T KNOW</pattern>
+    <template>
+        No worries at all! That's totally fine - not everyone knows everything, and that's what makes great developers.
+        <random>
+            <li>How do you typically approach learning new things?</li>
+            <li>Tell me about something you learned recently that excited you.</li>
+            <li>What's your process when you encounter something unfamiliar?</li>
+        </random>
+    </template>
+</category>
+
+<category>
+    <pattern>I AM NOT SURE</pattern>
+    <template><srai>I DON'T KNOW</srai></template>
+</category>
+
+<category>
+    <pattern>I THINK SO</pattern>
+    <template>
+        That's a thoughtful response! I appreciate your honesty.
+        <random>
+            <li>What makes you lean in that direction?</li>
+            <li>Can you tell me more about your thinking on that?</li>
+            <li>What's your experience been with similar situations?</li>
+        </random>
+    </template>
+</category>
+
+<!-- Goodbye Patterns -->
+<category>
+    <pattern>BYE</pattern>
+    <template>
+        Thanks so much for your time, <get name="candidate_name"/>! It was great chatting with you.
+        
+        Even though we didn't finish everything, I got some good insights about your background. 
+        If you want to pick up where we left off sometime, just start a new chat - no problem at all!
+        
+        Best of luck with your job search, and I hope we get to work together soon! 👋
+    </template>
+</category>
+
+<category>
+    <pattern>GOODBYE</pattern>
+    <template><srai>BYE</srai></template>
+</category>
+
+<category>
+    <pattern>THANKS</pattern>
+    <template><srai>BYE</srai></template>
+</category>
+
+<category>
+    <pattern>THANK YOU</pattern>
+    <template><srai>BYE</srai></template>
+</category>
+
+<!-- Fallback Pattern -->
+<category>
+    <pattern>*</pattern>
+    <template>
+        I'm not quite sure I caught that! Could you help me out?
+        <random>
+            <li>Could you try rephrasing that?</li>
+            <li>Mind trying again?</li>
+            <li>Could you say that differently?</li>
+        </random>
+        
+        I'm here to chat about your background and experience for TalentScout. You can:
+        - Tell me more about yourself or your experience
+        - Answer whatever question I just asked
+        - Ask me about TalentScout or our process
+        - Say 'bye' if you need to wrap up
+    </template>
+</category>
+
+</aiml>

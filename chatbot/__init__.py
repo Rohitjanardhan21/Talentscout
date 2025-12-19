@@ -1,0 +1,1 @@
+# Chatbot package for TalentScout Hiring Assistant
