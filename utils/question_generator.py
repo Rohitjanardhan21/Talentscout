@@ -248,7 +248,10 @@ class TechnicalQuestionGenerator:
                 "How do you secure database connections and queries?",
                 "What's your strategy for handling security in CI/CD pipelines?",
                 "How do you implement secure file upload and processing?"
-            ]
+            ],
+            
+            # Continue AWS questions
+            'aws_extended': [
                 "Explain the difference between S3 storage classes.",
                 "What is AWS Lambda and when would you use it?",
                 "How does AWS VPC work?",
